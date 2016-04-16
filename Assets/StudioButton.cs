@@ -3,21 +3,12 @@ using System.Collections;
 
 public class StudioButton : Button {
 
-	public KeyCode k;
-
-	public float blinkDuration;
 	public Texture2D noBlink;
 	public Texture2D blink;
 	public SequenceManager manager;
 	public int pos;
 
 	private bool on;
-
-	public void Update() {
-		if (Input.GetKeyDown (k)) {
-			pressButton ();
-		}
-	}
 
 	public override void pressButton() {
 	if (activatable) {
