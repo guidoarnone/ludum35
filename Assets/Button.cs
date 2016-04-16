@@ -7,7 +7,7 @@ public class Button : MonoBehaviour {
 	public bool startsOn;
 	protected bool activatable;
 
-	public void Start() {
+	public virtual void Start() {
 		if (startsOn) {
 			unlockButton ();
 		} 
