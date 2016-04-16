@@ -4,6 +4,7 @@ using System.Collections;
 public class lockNumber : MonoBehaviour {
 
 	public int DEBUGNUMBER;
+	public int currentNum;
 
 	public int numbersNumber;
 	public float rotationTime;
@@ -21,10 +22,12 @@ public class lockNumber : MonoBehaviour {
 		currentNumber = DEBUGNUMBER;
 		setNumber (DEBUGNUMBER);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-	
+		if (Input.GetKey(KeyCode.Space)) {
+			nextNumber ();
+		}
+		currentNum = getNumber();
 	}
 
 	public void prevNumber() {
@@ -37,13 +40,15 @@ public class lockNumber : MonoBehaviour {
 
 	public void setNumber(int toNumber) {
 		startingAngle = transform.eulerAngles;
+		startingTime = Time.time;
+		finishTime = startingTime + rotationTime;
 		desiredNumber = toNumber;
 		desiredRotation = toNumber * 360f / numbersNumber;
 		StartCoroutine(Rotatiiing ());
 	}
 
 	public int getNumber() {
-		return currentNumber;
+		return currentNumber % numbersNumber;
 	}
 
 	IEnumerator Rotatiiing() {
@@ -52,15 +57,15 @@ public class lockNumber : MonoBehaviour {
 		Vector3 currentAngle = transform.eulerAngles;
 
 		currentAngle = new Vector3(
-			Mathf.LerpAngle(startingAngle.x, targetAngle.x, Time.deltaTime),
-			Mathf.LerpAngle(startingAngle.y, targetAngle.y, Time.deltaTime),
-			Mathf.LerpAngle(startingAngle.z, targetAngle.z, Time.deltaTime));
+			Mathf.LerpAngle(startingAngle.x, targetAngle.x, (Time.time - startingTime) / rotationTime),
+			Mathf.LerpAngle(startingAngle.y, targetAngle.y, (Time.time - startingTime) / rotationTime),
+			Mathf.LerpAngle(startingAngle.z, targetAngle.z, (Time.time - startingTime) / rotationTime));
 
 		transform.eulerAngles = currentAngle;
 
 		yield return new WaitForSeconds (Time.deltaTime);
 
-		if (Mathf.Abs(currentAngle.y - desiredRotation) < 5f) {
+		if (Time.time >= finishTime) {
 			transform.eulerAngles = targetAngle;
 			currentNumber = desiredNumber;
 		}
