@@ -7,8 +7,6 @@ public class Lock : MonoBehaviour {
 	public int password;
 	public Dial[] numbers;
 
-	//PONER LOCKS DE ATRAS PARA ADELANTE
-
 	// Use this for initialization
 	void Start () {
 	
