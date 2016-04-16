@@ -17,10 +17,10 @@ public class Pickupper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (carrying) {
+		if (Input.GetMouseButtonDown (0)) {
+			togglePickup ();
+		} else if (carrying) {
 			carry ();
-		} else {
-			pickup ();
 		}
 	}
 
@@ -29,11 +29,13 @@ public class Pickupper : MonoBehaviour {
 		carried.transform.position = Vector3.Lerp (carried.transform.position, actualPos, Time.deltaTime * smooth);
 	}
 
-	void pickup(){
-		if (Input.GetMouseButtonDown (0)) {
+	void togglePickup(){
+		if (carrying) {
+			carrying = false;
+		} else {
 			RaycastHit hit;
 			if (Physics.Raycast (cam.transform.position, cam.transform.forward, out hit)) {
-				Pickupable p = hit.collider.GetComponent<Pickupable>();
+				Pickupable p = hit.collider.GetComponent<Pickupable> ();
 				if (p != null) {
 					carrying = true;
 					carried = p.gameObject;
