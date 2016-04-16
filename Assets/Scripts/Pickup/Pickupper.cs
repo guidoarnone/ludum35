@@ -6,7 +6,7 @@ public class Pickupper : MonoBehaviour {
 	private Camera cam;
 	private bool carrying;
 	private GameObject carried;
-	private int hangerslayerMask = 1 << 8;
+	private int hangerslayerMask;
 
 	public float smooth = 15;
 	public float distance = 3;
@@ -14,6 +14,7 @@ public class Pickupper : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cam = GetComponent<Camera> ();
+		hangerslayerMask = 1 << LayerMask.NameToLayer ("Hangers");
 	}
 
 	void FixedUpdate () {
