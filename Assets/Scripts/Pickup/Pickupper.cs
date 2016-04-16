@@ -6,9 +6,10 @@ public class Pickupper : MonoBehaviour {
 	private Camera cam;
 	private bool carrying;
 	private GameObject carried;
+	private int hangerslayerMask = 1 << 8;
 
-	public float smooth;
-	public float distance;
+	public float smooth = 15;
+	public float distance = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -31,8 +32,7 @@ public class Pickupper : MonoBehaviour {
 
 	void togglePickup(){
 		if (carrying) {
-			carrying = false;
-			setKinematic (false);
+			drop ();
 		} else {
 			RaycastHit hit;
 			if (Physics.Raycast (cam.transform.position, cam.transform.forward, out hit)) {
@@ -49,6 +49,16 @@ public class Pickupper : MonoBehaviour {
 		Rigidbody body = carried.GetComponent<Rigidbody> ();
 		if (body != null) {
 			body.isKinematic = kinematic;
+		}
+	}
+
+	void drop(){
+		carrying = false;
+		setKinematic (false);
+		RaycastHit hit;
+		if (Physics.Raycast (cam.transform.position, cam.transform.forward,out hit, 10,hangerslayerMask)) {
+			Hanger hanger = hit.collider.GetComponent<Hanger> ();
+			hanger.hang (carried);
 		}
 	}
 }
