@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class lockNumber : MonoBehaviour {
+public class lockNumber : Dial {
 
-	public int DEBUGNUMBER;
-	public int currentNum;
-
+	public int startNumber;
 	public int numbersNumber;
 	public float rotationTime;
 
@@ -19,26 +17,19 @@ public class lockNumber : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentNumber = DEBUGNUMBER;
-		setNumber (DEBUGNUMBER);
+		currentNumber = startNumber;
+		dialSet (startNumber);
 	}
 
-	void Update () {
-		if (Input.GetKey(KeyCode.Space)) {
-			nextNumber ();
-		}
-		currentNum = getNumber();
+	public override void dialUp() {
+		dialSet (currentNumber + 1);
 	}
 
-	public void prevNumber() {
-		setNumber (currentNumber - 1);
+	public override void dialDown() {
+		dialSet (currentNumber - 1);
 	}
 
-	public void nextNumber() {
-		setNumber (currentNumber + 1);
-	}
-
-	public void setNumber(int toNumber) {
+	public override void dialSet(int toNumber) {
 		startingAngle = transform.eulerAngles;
 		startingTime = Time.time;
 		finishTime = startingTime + rotationTime;
@@ -47,8 +38,14 @@ public class lockNumber : MonoBehaviour {
 		StartCoroutine(Rotatiiing ());
 	}
 
-	public int getNumber() {
-		return currentNumber % numbersNumber;
+	public override int dialGet() {
+		if (currentNumber >= 0) {
+			return currentNumber % numbersNumber;
+		}
+		else {
+			return numbersNumber + (currentNumber % numbersNumber);
+		}
+
 	}
 
 	IEnumerator Rotatiiing() {
@@ -73,9 +70,4 @@ public class lockNumber : MonoBehaviour {
 			StartCoroutine(Rotatiiing ());
 		}
 	}
-
-	private float interFunction(float value) {
-		return 0;
-	}
-
 }
