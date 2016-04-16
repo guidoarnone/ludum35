@@ -4,10 +4,16 @@ using System.Collections;
 public class Button : MonoBehaviour {
 
 	public float cooldown;
+	public bool startsOn;
 	protected bool activatable;
 
 	public void Start() {
-		activatable = false;
+		if (startsOn) {
+			unlockButton ();
+		} 
+		else {
+			activatable = false;
+		}
 	}
 
 	// Use this for initialization
