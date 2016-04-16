@@ -14,9 +14,8 @@ public class Pickupper : MonoBehaviour {
 	void Start () {
 		cam = GetComponent<Camera> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void FixedUpdate () {
 		if (Input.GetMouseButtonDown (0)) {
 			togglePickup ();
 		} else if (carrying) {
@@ -25,6 +24,7 @@ public class Pickupper : MonoBehaviour {
 	}
 
 	void carry(){
+		setKinematic (true);
 		Vector3 actualPos = cam.transform.position + cam.transform.forward * distance;
 		carried.transform.position = Vector3.Lerp (carried.transform.position, actualPos, Time.deltaTime * smooth);
 	}
@@ -32,6 +32,7 @@ public class Pickupper : MonoBehaviour {
 	void togglePickup(){
 		if (carrying) {
 			carrying = false;
+			setKinematic (false);
 		} else {
 			RaycastHit hit;
 			if (Physics.Raycast (cam.transform.position, cam.transform.forward, out hit)) {
@@ -41,6 +42,13 @@ public class Pickupper : MonoBehaviour {
 					carried = p.gameObject;
 				}
 			}
+		}
+	}
+
+	void setKinematic(bool kinematic){
+		Rigidbody body = carried.GetComponent<Rigidbody> ();
+		if (body != null) {
+			body.isKinematic = kinematic;
 		}
 	}
 }
