@@ -9,7 +9,6 @@ public class Sway : MonoBehaviour {
 	public List<float> finalValues;
 
 	private Shapeshifter shapeshifter;
-	private int iterator = 0;
 
 	void Start () {
 		shapeshifter = this.GetComponent<Shapeshifter> ();
@@ -18,6 +17,10 @@ public class Sway : MonoBehaviour {
 	}
 	
 	void Update () {
+		this.sway ();
+	}
+
+	public void sway() {
 		if (!shapeshifter.isOnTransition()) {
 			this.invert ();
 			Debug.Log (this.finalValues[0]);

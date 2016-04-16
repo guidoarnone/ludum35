@@ -83,7 +83,9 @@ public class Shapeshifter : MonoBehaviour {
 	private void updateTransitions() {
 		for (int t = 0; t < transitionList.Count; t++) {
 			float nextValue = transitionList [t].getCurrentValue () + transitionList [t].getRate () * Time.deltaTime;
-			nextValue = Mathf.Min(nextValue, transitionList[t].getFinalValue());
+			if (Mathf.Abs (transitionList [t].getFinalValue ()) < Mathf.Abs (nextValue)) {
+				nextValue = transitionList [t].getFinalValue ();
+			}
 			this.setShapeshift (t, nextValue);
 			transitionList [t].setCurrentValue (nextValue);
 		}	
