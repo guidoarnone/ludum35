@@ -24,6 +24,7 @@ public class StudioButton : Button {
 
 	public override void unlockButton () {
 		activatable = true;
+		turnOff ();
 	}
 
 	public void blinkTexture() {
