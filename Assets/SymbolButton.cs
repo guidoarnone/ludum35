@@ -7,12 +7,6 @@ public class SymbolButton : Button {
 	public Texture2D[] symbols;
 	private int selectedIndex;
 
-	public void Update() {
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			pressButton ();
-		}
-	}
-
 	public override void Start() {
 		if (startsOn) {
 			unlockButton ();
@@ -42,12 +36,19 @@ public class SymbolButton : Button {
 
 	public void setSymbol(int index) {
 		selectedIndex = index;
-		Debug.Log ("symbol " + selectedIndex%symbols.Length);
 		gameObject.GetComponent<Renderer> ().material.mainTexture = symbols[selectedIndex%symbols.Length];
+	}
+
+	public int getSymbol() {
+		return selectedIndex;
 	}
 
 	IEnumerator waitForIt(float t) {
 		yield return new WaitForSeconds (t);
 		unlockButton ();
+	}
+
+	public void win() {
+		activatable = false;
 	}
 }
