@@ -50,7 +50,6 @@ public class StudioButton : Button {
 	}
 
 	public void win() {
-		Debug.Log ("win");
 		gameObject.GetComponent<Renderer> ().material.mainTexture = noBlink;
 		activatable = false;
 	}

@@ -39,7 +39,6 @@ public class SymbolButtonManager : MonoBehaviour {
 		solved = true;
 		foreach (SymbolButton b in buttons) {
 			b.win ();
-			Debug.Log ("Win");
 		}
 	}
 }
