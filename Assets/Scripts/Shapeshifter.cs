@@ -9,7 +9,8 @@ public class Shapeshifter : MonoBehaviour {
 	private int blendShapeCount;
 
 	private List<Transition> transitionList;
-	private bool onTransition = false;
+	public bool onTransition = false;
+	private bool sway = false;
 
 	void Start () {
 		this.skinnedMeshRenderer = gameObject.GetComponent<SkinnedMeshRenderer> ();
@@ -24,8 +25,8 @@ public class Shapeshifter : MonoBehaviour {
 
 	void Update () {
 		if (this.onTransition) {
-			this.updateTransitions();
 			this.checkTransitionsAndFinish();
+			this.updateTransitions();
 		}
 	}
 
@@ -45,6 +46,11 @@ public class Shapeshifter : MonoBehaviour {
 				this.transitionList.Add(transitions [i]);
 			}
 		}
+	}
+
+	public void startSwayTransition(List<Transition> transitions) {
+		this.sway = true;
+		this.startTransition (transitions);
 	}
 
 	public void setShapeshift(int index, float s) {
@@ -75,16 +81,22 @@ public class Shapeshifter : MonoBehaviour {
 			}
 		}
 		if (finished) {
-			this.onTransition = false;
-			this.clearTransitions ();
+			if (sway) {
+				this.invert ();
+			} else {
+				this.onTransition = false;
+				this.clearTransitions ();
+			}
 		}
 	}
 
 	private void updateTransitions() {
 		for (int t = 0; t < transitionList.Count; t++) {
 			float nextValue = transitionList [t].getCurrentValue () + transitionList [t].getRate () * Time.deltaTime;
-			if (Mathf.Abs (transitionList [t].getFinalValue ()) < Mathf.Abs (nextValue)) {
-				nextValue = transitionList [t].getFinalValue ();
+			if (transitionList[t].getRate() > 0) {
+				nextValue = Mathf.Min(nextValue, transitionList [t].getFinalValue ());
+			} else if(transitionList[t].getRate() < 0) {
+				nextValue = Mathf.Max (nextValue, transitionList [t].getFinalValue ());
 			}
 			this.setShapeshift (t, nextValue);
 			transitionList [t].setCurrentValue (nextValue);
@@ -109,8 +121,13 @@ public class Shapeshifter : MonoBehaviour {
 		return transitions;
 	}
 
-	public bool isOnTransition() {
-		return this.onTransition;
+	public void invert() {
+		for (int t = 0; t < transitionList.Count; t++) {
+			transitionList [t].setRate (transitionList [t].getRate () * -1);
+			float auxInit = transitionList [t].getInitialValue ();
+			transitionList [t].setInitialValue (transitionList [t].getFinalValue ());
+			transitionList [t].setFinalValue (auxInit);
+		}
 	}
-
+		
 }

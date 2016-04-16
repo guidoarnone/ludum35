@@ -19,7 +19,7 @@ public class Repeat : MonoBehaviour {
 	}
 
 	void repeat() {
-		if (!shapeshifter.isOnTransition()) {
+		if (!shapeshifter.onTransition) {
 			shapeshifter.setShapeshift (this.initialValues);
 			shapeshifter.startTransition (shapeshifter.makeTransitionsFromCurrentState (this.rates, this.finalValues));
 		}
