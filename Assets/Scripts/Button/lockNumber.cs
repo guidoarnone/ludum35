@@ -17,19 +17,26 @@ public class lockNumber : Dial {
 	private int currentNumber;
 	private int desiredNumber;
 
+	private bool isRotating;
+
 	// Use this for initialization
 	void Start () {
+		isRotating = false;
 		currentNumber = startNumber;
 		currentAngle = 0;
 		dialSet (startNumber);
 	}
 
 	public override void dialUp() {
-		dialSet (currentNumber + 1);
+		if (!isRotating) {
+			dialSet (currentNumber + 1);
+		}
 	}
 
 	public override void dialDown() {
-		dialSet (currentNumber - 1);
+		if (!isRotating) {
+			dialSet (currentNumber - 1);
+		}
 	}
 
 	public override void dialSet(int toNumber) {
@@ -38,6 +45,7 @@ public class lockNumber : Dial {
 		finishTime = startingTime + rotationTime;
 		desiredNumber = toNumber;
 		desiredAngle = -toNumber * (360f / numbersNumber);
+		isRotating = true;
 		StartCoroutine(Rotatiiing ());
 	}
 
@@ -68,6 +76,7 @@ public class lockNumber : Dial {
 		if (Time.time >= finishTime) {
 			currentNumber = desiredNumber;
 			Debug.Log (currentNumber);
+			isRotating = false;
 			chageState ();
 		}
 		else {

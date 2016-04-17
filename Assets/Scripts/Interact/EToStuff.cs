@@ -8,7 +8,7 @@ public class EToStuff : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.E) || Input.GetMouseButtonDown (0)) {
+		if (Input.GetKey (KeyCode.E) || Input.GetMouseButton (0)) {
 			interact ();
 		}
 	}
