@@ -19,24 +19,39 @@ public class Puerta : Button {
 
 	public override void Start ()
 	{
+		if (startsOn) {
+			unlockButton ();
+		} 
+		else {
+			activatable = false;
+		}
 		startRotation ();
 	}
 
 	public override void pressButton () {
-
-		if (requiresKey) {
-			GameObject player = GameObject.FindGameObjectWithTag ("Player");
-			Inventory inventory = player.GetComponent<Inventory> ();
-			if (inventory.getHasKey (keysRequired)) {
+		if (activatable) {
+			if (requiresKey) {
+				GameObject player = GameObject.FindGameObjectWithTag ("Player");
+				Inventory inventory = player.GetComponent<Inventory> ();
+				if (inventory.getHasKey (keysRequired)) {
+					opened = !opened;
+					startRotation ();
+				}
+			} else {
 				opened = !opened;
 				startRotation ();
 			}
-		} 
-
-		else {
-			opened = !opened;
-			startRotation ();
+			lockButton (cooldown);
 		}
+	}
+
+	public override void lockButton (float time) {
+		activatable = false;
+		StartCoroutine (waitForIt(time));
+	}
+
+	public override void unlockButton () {
+		activatable = true;
 	}
 
 	private void startRotation () {
@@ -64,5 +79,10 @@ public class Puerta : Button {
 		if (!(Time.time >= finishTime)) {
 			StartCoroutine(Rotatiiing ());
 		}
+	}
+
+	IEnumerator waitForIt(float t) {
+		yield return new WaitForSeconds (t);
+		unlockButton ();
 	}
 }
