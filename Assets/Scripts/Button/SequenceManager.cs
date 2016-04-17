@@ -61,7 +61,6 @@ public class SequenceManager : MonoBehaviour {
 		}
 		if (!solved) {
 		StartCoroutine (blinky());
-			Debug.Log ("blink");
 		}
 
 	}

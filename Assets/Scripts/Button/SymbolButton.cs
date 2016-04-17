@@ -9,7 +9,6 @@ public class SymbolButton : Button {
 
 	public override void Start() {
 		if (startsOn) {
-			Debug.Log ("hey");
 			unlockButton ();
 		} 
 		else {
