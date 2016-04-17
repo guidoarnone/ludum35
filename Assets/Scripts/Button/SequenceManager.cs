@@ -40,6 +40,7 @@ public class SequenceManager : MonoBehaviour {
 		Debug.Log ("no " + inputSequence);
 		currentPos = 0;
 		foreach (StudioButton b in buttons) {
+			b.turnOff ();
 			b.unlockButton ();
 		}
 	}
@@ -60,6 +61,7 @@ public class SequenceManager : MonoBehaviour {
 		}
 		if (!solved) {
 		StartCoroutine (blinky());
+			Debug.Log ("blink");
 		}
 
 	}

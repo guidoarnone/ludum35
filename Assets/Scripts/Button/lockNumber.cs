@@ -60,7 +60,6 @@ public class lockNumber : Dial {
 
 		if (Time.time >= finishTime) {
 			currentNumber = desiredNumber;
-			Debug.Log ("Finish");
 		}
 		else {
 			StartCoroutine(Rotatiiing ());

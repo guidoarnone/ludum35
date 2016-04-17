@@ -44,10 +44,12 @@ public class StudioButton : Button {
 		
 	public void turnOn() {
 		gameObject.GetComponent<Renderer> ().material.mainTexture = blink;
+		on = true;
 	}
 
 	public void turnOff() {
 		gameObject.GetComponent<Renderer> ().material.mainTexture = noBlink;
+		on = false;
 	}
 
 	public void win() {
