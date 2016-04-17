@@ -33,10 +33,11 @@ public class lockNumber : Dial {
 	}
 
 	public override void dialSet(int toNumber) {
+		Debug.Log (toNumber);
 		startingTime = Time.time;
 		finishTime = startingTime + rotationTime;
 		desiredNumber = toNumber;
-		desiredAngle = toNumber * (360f / numbersNumber);
+		desiredAngle = -toNumber * (360f / numbersNumber);
 		StartCoroutine(Rotatiiing ());
 	}
 
@@ -66,6 +67,7 @@ public class lockNumber : Dial {
 
 		if (Time.time >= finishTime) {
 			currentNumber = desiredNumber;
+			Debug.Log (currentNumber);
 			chageState ();
 		}
 		else {
