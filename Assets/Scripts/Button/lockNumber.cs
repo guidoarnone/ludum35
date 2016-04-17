@@ -9,15 +9,16 @@ public class lockNumber : Dial {
 
 	private float startingTime;
 	private float finishTime;
+	private float currentAngle;
+	private float desiredAngle;
 
 	private int currentNumber;
 	private int desiredNumber;
-	private float desiredRotation;
-	private Vector3 startingAngle;
 
 	// Use this for initialization
 	void Start () {
 		currentNumber = startNumber;
+		currentAngle = 0;
 		dialSet (startNumber);
 	}
 
@@ -30,11 +31,10 @@ public class lockNumber : Dial {
 	}
 
 	public override void dialSet(int toNumber) {
-		startingAngle = transform.eulerAngles;
 		startingTime = Time.time;
 		finishTime = startingTime + rotationTime;
 		desiredNumber = toNumber;
-		desiredRotation = toNumber * 360f / numbersNumber;
+		desiredAngle = toNumber * (360f / numbersNumber);
 		StartCoroutine(Rotatiiing ());
 	}
 
@@ -50,21 +50,17 @@ public class lockNumber : Dial {
 
 	IEnumerator Rotatiiing() {
 
-		Vector3 targetAngle = new Vector3(0f, desiredRotation, 0f);
-		Vector3 currentAngle = transform.eulerAngles;
+		float a = Mathf.LerpAngle (currentAngle, desiredAngle, (Time.time - startingTime) / rotationTime);
 
-		currentAngle = new Vector3(
-			Mathf.LerpAngle(startingAngle.x, targetAngle.x, (Time.time - startingTime) / rotationTime),
-			Mathf.LerpAngle(startingAngle.y, targetAngle.y, (Time.time - startingTime) / rotationTime),
-			Mathf.LerpAngle(startingAngle.z, targetAngle.z, (Time.time - startingTime) / rotationTime));
-
-		transform.eulerAngles = currentAngle;
+		transform.RotateAround(transform.position, transform.right, a - currentAngle);
+		currentAngle = a;
+		//transform.eulerAngles = currentAngle;
 
 		yield return new WaitForSeconds (Time.deltaTime);
 
 		if (Time.time >= finishTime) {
-			transform.eulerAngles = targetAngle;
 			currentNumber = desiredNumber;
+			Debug.Log ("Finish");
 		}
 		else {
 			StartCoroutine(Rotatiiing ());
