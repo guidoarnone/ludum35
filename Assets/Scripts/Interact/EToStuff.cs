@@ -17,7 +17,7 @@ public class EToStuff : MonoBehaviour {
 		RaycastHit hit;
 
 		Vector3 dir = transform.forward;
-		int layer = 8;
+		int layer = LayerMask.NameToLayer ("Interactable");;
 		int layermask = 1 << layer;
 
 		Physics.Raycast (rayOrigin.position, dir, out hit, interactDistance, layermask);
