@@ -9,6 +9,7 @@ public class Puerta : Button {
 	public float rotationTime = 10;
 	public bool opened = false;
 	public bool requiresKey;
+	public int[] keysRequired;
 
 	private float currentAngle;
 	private float desiredAngle;
@@ -26,7 +27,7 @@ public class Puerta : Button {
 		if (requiresKey) {
 			GameObject player = GameObject.FindGameObjectWithTag ("Player");
 			Inventory inventory = player.GetComponent<Inventory> ();
-			if (inventory.getHasKey ()) {
+			if (inventory.getHasKey (keysRequired)) {
 				opened = !opened;
 				startRotation ();
 			}
