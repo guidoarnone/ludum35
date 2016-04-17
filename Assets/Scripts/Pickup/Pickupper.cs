@@ -17,7 +17,7 @@ public class Pickupper : MonoBehaviour {
 		hangerslayerMask = 1 << LayerMask.NameToLayer ("Hangers");
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			togglePickup ();
 		} else if (carrying) {
@@ -26,9 +26,8 @@ public class Pickupper : MonoBehaviour {
 	}
 
 	void carry(){
-		setKinematic (true);
 		Vector3 actualPos = cam.transform.position + cam.transform.forward * distance;
-		carried.transform.position = Vector3.Lerp (carried.transform.position, actualPos, Time.deltaTime * smooth);
+		carried.transform.position = Vector3.Lerp (carried.transform.position,actualPos,Time.deltaTime * smooth);
 	}
 
 	void togglePickup(){
@@ -41,6 +40,8 @@ public class Pickupper : MonoBehaviour {
 				if (p != null) {
 					carrying = true;
 					carried = p.gameObject;
+					setKinematic (true);
+					Physics.IgnoreCollision (GetComponentInParent<Collider>(), carried.GetComponent<Collider>());
 				}
 			}
 		}
@@ -61,5 +62,6 @@ public class Pickupper : MonoBehaviour {
 			Hanger hanger = hit.collider.GetComponent<Hanger> ();
 			hanger.hang (carried);
 		}
+		Physics.IgnoreCollision (GetComponentInParent<Collider>(), carried.GetComponent<Collider>(), false);
 	}
 }
