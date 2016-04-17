@@ -8,8 +8,8 @@ public class Pickupper : MonoBehaviour {
 	private GameObject carried;
 	private int hangerslayerMask;
 
-	public float smooth = 15;
 	public float distance = 3;
+	public float force=10;
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +26,12 @@ public class Pickupper : MonoBehaviour {
 	}
 
 	void carry(){
-		Vector3 actualPos = cam.transform.position + cam.transform.forward * distance;
-		carried.transform.position = Vector3.Lerp (carried.transform.position,actualPos,Time.deltaTime * smooth);
+		Rigidbody body = carried.GetComponent<Rigidbody> ();
+		body.velocity = Vector3.zero;
+		body.angularVelocity = Vector3.zero;
+		Vector3 actualForce = cam.transform.position + cam.transform.forward * distance-carried.transform.position;
+		actualForce *= force*100;
+		body.AddForce (actualForce);
 	}
 
 	void togglePickup(){
@@ -40,28 +44,23 @@ public class Pickupper : MonoBehaviour {
 				if (p != null) {
 					carrying = true;
 					carried = p.gameObject;
-					setKinematic (true);
+					Rigidbody body = carried.GetComponent<Rigidbody> ();
+					body.useGravity=false;
 					Physics.IgnoreCollision (GetComponentInParent<Collider>(), carried.GetComponent<Collider>());
 				}
 			}
 		}
 	}
 
-	void setKinematic(bool kinematic){
-		Rigidbody body = carried.GetComponent<Rigidbody> ();
-		if (body != null) {
-			body.isKinematic = kinematic;
-		}
-	}
-
 	void drop(){
 		carrying = false;
-		setKinematic (false);
 		RaycastHit hit;
 		if (Physics.Raycast (cam.transform.position, cam.transform.forward,out hit, 10,hangerslayerMask)) {
 			Hanger hanger = hit.collider.GetComponent<Hanger> ();
 			hanger.hang (carried);
 		}
+		Rigidbody body = carried.GetComponent<Rigidbody> ();
+		body.useGravity=true;
 		Physics.IgnoreCollision (GetComponentInParent<Collider>(), carried.GetComponent<Collider>(), false);
 	}
 }
