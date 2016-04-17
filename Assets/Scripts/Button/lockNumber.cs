@@ -3,6 +3,8 @@ using System.Collections;
 
 public class lockNumber : Dial {
 
+	public Lock locky;
+
 	public int startNumber;
 	public int numbersNumber;
 	public float rotationTime;
@@ -48,6 +50,10 @@ public class lockNumber : Dial {
 
 	}
 
+	private void chageState() {
+		locky.tryOpen ();
+	}
+
 	IEnumerator Rotatiiing() {
 
 		float a = Mathf.LerpAngle (currentAngle, desiredAngle, (Time.time - startingTime) / rotationTime);
@@ -60,6 +66,7 @@ public class lockNumber : Dial {
 
 		if (Time.time >= finishTime) {
 			currentNumber = desiredNumber;
+			chageState ();
 		}
 		else {
 			StartCoroutine(Rotatiiing ());

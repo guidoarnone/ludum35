@@ -1,15 +1,16 @@
 fileFormatVersion: 2
-guid: 70eee77f27d12c04ab9b0cf5dc664a58
-timeCreated: 1460911512
+guid: e1e1ddea46420d34e91f2506b882e87e
+timeCreated: 1460924396
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    4300000: Cylinder012
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Libro 1
     9500000: //RootNode
-    13700000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

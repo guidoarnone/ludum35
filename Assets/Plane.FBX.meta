@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: 70eee77f27d12c04ab9b0cf5dc664a58
-timeCreated: 1460911512
+guid: 1e51c2c938c228449b2abcf44e7f62f7
+timeCreated: 1460922618
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    4300000: Cylinder012
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Plane001
     9500000: //RootNode
-    13700000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -53,7 +54,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []

@@ -22,7 +22,6 @@ public class Lock : MonoBehaviour {
 			return true;
 
 		}
-		Debug.Log ("nope");
 		return false;
 
 	}
