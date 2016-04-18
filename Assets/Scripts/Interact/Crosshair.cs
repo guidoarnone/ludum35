@@ -5,7 +5,7 @@ public class Crosshair : MonoBehaviour
 {
 	public Texture2D crosshairTexture; 
 	public Rect position; 
-	static bool OriginalOn = true;
+	static bool crossHair = true;
 
 	void Start() 
 	{
@@ -14,7 +14,7 @@ public class Crosshair : MonoBehaviour
 
 	void OnGUI() 
 	{
-		if(OriginalOn == true) 
+		if(crossHair == true) 
 			GUI.DrawTexture(position, crosshairTexture); 
 	}
 }

@@ -34,6 +34,7 @@ public class SSOnDistance : MonoBehaviour {
 			endValue = aux;
 		}
 
+		//shapeshifter.setShapeshift (index, startValue);
 		range = startDistance - endDistance;
 	}
 
@@ -42,7 +43,7 @@ public class SSOnDistance : MonoBehaviour {
 		float distance = Vector3.Distance (origin.position, target.position);
 		if (distance < startDistance) {
 			if (!(distance < endDistance)) {
-				shapeshifter.setShapeshift (index, (Mathf.Abs(distance - startDistance) / range + startValue) * 100f);
+				shapeshifter.setShapeshift (index, (Mathf.Abs(startDistance - distance) / range) * endValue + (1 - (Mathf.Abs(startDistance - distance) / range)) * startValue);
 			}
 		}
 	}

@@ -3,21 +3,30 @@ using System.Collections;
 
 public class AngleDetector : MonoBehaviour {
 
-	private GameObject player;
+	public float activeDistance;
+	public Transform player;
+	public BookScript book;
 
 	public int angleNumber;
+	private int previousNumber;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindWithTag ("Player");
+		previousNumber = getAngleNumber ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		angleNumber = getAngleNumber ();
+		if (Vector3.Distance(player.position, transform.position) < activeDistance) {
+			angleNumber = getAngleNumber ();
+			if (previousNumber != angleNumber) {
+				book.changeState (angleNumber);
+				previousNumber = angleNumber;
+			}
+		}
 	}
 
 	int getAngleNumber(){
-		Vector3 dir = player.transform.position - transform.position;
+		Vector3 dir = player.position - transform.position;
 		dir = this.transform.InverseTransformDirection(dir);
 		float angle = Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
 		angle += 180;

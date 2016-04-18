@@ -1,0 +1,130 @@
+fileFormatVersion: 2
+guid: 98e486826e3beaf4ba4dd758a1783b13
+timeCreated: 1461008926
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: boton1
+    100002: boton2
+    100004: Boton3
+    100006: Boton4
+    100008: Boton5
+    100010: Boton6
+    100012: Candado
+    100014: //RootNode
+    100016: Cilindro de Codigos 3
+    100018: Rueda1
+    100020: Rueda2
+    100022: Rueda3
+    400000: boton1
+    400002: boton2
+    400004: Boton3
+    400006: Boton4
+    400008: Boton5
+    400010: Boton6
+    400012: Candado
+    400014: //RootNode
+    400016: Cilindro de Codigos 3
+    400018: Rueda1
+    400020: Rueda2
+    400022: Rueda3
+    2300000: boton1
+    2300002: boton2
+    2300004: Boton3
+    2300006: Boton4
+    2300008: Boton5
+    2300010: Boton6
+    2300012: Candado
+    2300014: Cilindro de Codigos 3
+    2300016: Rueda1
+    2300018: Rueda2
+    2300020: Rueda3
+    3300000: boton1
+    3300002: boton2
+    3300004: Boton3
+    3300006: Boton4
+    3300008: Boton5
+    3300010: Boton6
+    3300012: Candado
+    3300014: Cilindro de Codigos 3
+    3300016: Rueda1
+    3300018: Rueda2
+    3300020: Rueda3
+    4300000: Cilindro de Codigos 3
+    4300002: Rueda1
+    4300004: Rueda2
+    4300006: Rueda3
+    4300008: boton1
+    4300010: boton2
+    4300012: Boton3
+    4300014: Boton4
+    4300016: Boton5
+    4300018: Boton6
+    4300020: Candado
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
