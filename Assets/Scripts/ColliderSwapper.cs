@@ -11,7 +11,7 @@ public class ColliderSwapper : MonoBehaviour {
 		gameObject.AddComponent (first.GetType());
 	}
 
-	public void swap(){
+	public void swap() {
 		Object.Destroy (gameObject.GetComponent<Collider> ());
 		gameObject.AddComponent (second.GetType());
 	}
