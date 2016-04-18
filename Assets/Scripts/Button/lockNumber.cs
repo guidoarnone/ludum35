@@ -43,7 +43,8 @@ public class lockNumber : Dial {
 		startingTime = Time.time;
 		finishTime = startingTime + rotationTime;
 		desiredNumber = toNumber;
-		desiredAngle = -toNumber * (360f / numbersNumber);
+		//INVERT FOR DIAL SAFDASFPJFAJ
+		desiredAngle = toNumber * (360f / numbersNumber);
 		isRotating = true;
 		StartCoroutine(Rotatiiing ());
 	}

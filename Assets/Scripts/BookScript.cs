@@ -26,7 +26,7 @@ public class BookScript : MonoBehaviour {
 
 	private void evaluate() {
 		if (desiredPage != currentPage) {
-			if (desiredPage != 0 && desiredPage != maxPages - 1) {
+			if (desiredPage != 0 && desiredPage != maxPages) {
 				if (desiredPage < currentPage) {
 					turnLeft ();
 				} 

@@ -28,6 +28,11 @@ public class Puerta : Button {
 		startRotation ();
 	}
 
+	public void open() {
+		opened = true;
+		startRotation ();
+	}
+
 	public override void pressButton () {
 		if (activatable) {
 			if (requiresKey) {

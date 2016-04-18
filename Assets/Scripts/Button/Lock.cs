@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Lock : MonoBehaviour {
 
+	public Puerta puerta;
 	public int digits;
 	public int password;
 	public Dial[] numbers;
@@ -14,7 +15,7 @@ public class Lock : MonoBehaviour {
 			pass += numbers[numbers.Length - i - 1].dialGet () * multiplier;
 			multiplier *= 10;
 		}
-
+		Debug.Log (pass);
 		if (pass == password) {
 			Debug.Log ("win");
 			open ();
@@ -23,5 +24,6 @@ public class Lock : MonoBehaviour {
 	}
 
 	private void open() {
+		puerta.open ();
 	}
 }

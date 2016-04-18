@@ -3,6 +3,9 @@ using System.Collections;
 
 public class EToStuff : MonoBehaviour {
 
+	public AudioClip SC;
+	public AudioSource AS;
+
 	public Texture2D texel;
 	public Texture2D button1;
 	public Texture2D button2;
@@ -10,14 +13,20 @@ public class EToStuff : MonoBehaviour {
 	public Transform rayOrigin;
 	public bool openMenu;
 
+	void Start () {
+		AS.clip = SC;
+		AS.loop = true;
+		AS.Play ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.E) || Input.GetMouseButton (0)) {
 			interact ();
 		}
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			menu ();
-		}
+//		if (Input.GetKeyDown (KeyCode.Escape)) {
+//			menu ();
+//		}
 	}
 
 	private void interact(){
