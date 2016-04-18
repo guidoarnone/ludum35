@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: afa364dcf1584ba46b24b82323b94d21
-timeCreated: 1460924396
+guid: d5514ba632833e94ea7aba877752cf73
+timeCreated: 1460957446
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Libro_abierto
+    4300000: Candelabro0
     7400000: Take 001
     9500000: //RootNode
+    13700000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
@@ -55,7 +54,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

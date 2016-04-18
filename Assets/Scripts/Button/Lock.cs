@@ -14,8 +14,6 @@ public class Lock : MonoBehaviour {
 			pass += numbers[numbers.Length - i - 1].dialGet () * multiplier;
 			multiplier *= 10;
 		}
-			
-		Debug.Log (pass);
 
 		if (pass == password) {
 			Debug.Log ("win");

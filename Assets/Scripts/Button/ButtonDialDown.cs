@@ -9,7 +9,6 @@ public class ButtonDialDown : Button {
 		if (activatable) {
 			foreach (Dial d in dials) {
 				d.dialDown ();
-				lockButton (cooldown);
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: afa364dcf1584ba46b24b82323b94d21
-timeCreated: 1460924396
+guid: 09e52365db22098498fe9f4093fc9964
+timeCreated: 1460961138
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,11 +9,10 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Libro_abierto
-    7400000: Take 001
+    4300000: EscaleritaDeformada
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

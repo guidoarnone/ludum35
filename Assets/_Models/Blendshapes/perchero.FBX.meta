@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: afa364dcf1584ba46b24b82323b94d21
-timeCreated: 1460924396
+guid: 09e4135832861d84e9873587dd89e70e
+timeCreated: 1460957444
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Libro_abierto
+    4300000: Perchero
     7400000: Take 001
     9500000: //RootNode
   materials:
@@ -55,7 +55,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

@@ -40,7 +40,6 @@ public class lockNumber : Dial {
 	}
 
 	public override void dialSet(int toNumber) {
-		Debug.Log (toNumber);
 		startingTime = Time.time;
 		finishTime = startingTime + rotationTime;
 		desiredNumber = toNumber;
@@ -75,7 +74,6 @@ public class lockNumber : Dial {
 
 		if (Time.time >= finishTime) {
 			currentNumber = desiredNumber;
-			Debug.Log (currentNumber);
 			isRotating = false;
 			chageState ();
 		}
