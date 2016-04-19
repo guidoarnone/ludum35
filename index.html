@@ -1,1 +1,84 @@
-init
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wlobbie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body style="background-color:#21311D">
+    <div id="container" class="col-md-6 col-md-offset-3" style="text-align:center;">
+      <h1 style="color: #FFFFFF">Wlobbie</h1>
+      <br><br>
+      <img class="col-md-10 col-md-offset-1 row img-responsive" src="logo.jpg">
+      <br><br>
+      <div class="col-md-10 col-md-offset-1 row img-responsive panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#description" aria-expanded="true" aria-controls="description">
+                  Description
+                </a>
+              </h4>
+            </div>
+            <div id="description" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body"style="text-align:left;">
+                <h4>
+                 <p>
+                 This is a small game for the <a href="http://www.ludumdare.com">Ludum Dare</a> Jam 35. This year's theme was "<strong>Shapeshift</strong>".</p>
+                  <p>
+                    In a house that no one dares to enter, Wlobbie is following the legend of a treasure. The problem is that the house has its secrets. It <i>changes</i>.
+                  </p>
+                  <p>
+                    <strong>If you're on Chrome, UnityWebPlayer won't work unless you do "chrome://flags/#enable-npapi" first.</strong> You can disable this after playing.
+                  </p>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#controls" aria-expanded="false" aria-controls="collapseTwo">
+                  Controls
+                </a>
+              </h4>
+            </div>
+            <div id="controls" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <h4 style="text-align: left;">
+                  <ul>
+                    <li>
+                      Move with WASD
+                    </li>
+                    <li>
+                      Right click or press E to interact with the enviroment.
+                    </li>
+                  </ul>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#builds" aria-expanded="false" aria-controls="collapseThree">
+                  <a href="game.html"> Play <i class="fa fa-gamepad fa-3x"></i></a>
+                  <a href="https://github.com/guidoarnone/ludum35"> Source <i class="fa fa-github-alt fa-3x"></i></a>
+                </a>
+              </h4>
+            </div>
+            <div id="builds" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
